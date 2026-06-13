@@ -1,7 +1,14 @@
 # Better QL
 
+[![CI](https://github.com/nipunbatra/better-ql/actions/workflows/ci.yml/badge.svg)](https://github.com/nipunbatra/better-ql/actions/workflows/ci.yml)
+[![Deploy GitHub Pages](https://github.com/nipunbatra/better-ql/actions/workflows/pages.yml/badge.svg)](https://github.com/nipunbatra/better-ql/actions/workflows/pages.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Platform](https://img.shields.io/badge/platform-macOS%2013%2B-lightgrey)
+
 A richer Quick Look for macOS Finder. Press **Space** on a file and get a real
 preview instead of an icon.
+
+**Live site:** https://nipunbatra.github.io/better-ql/
 
 | Type | What you get |
 |------|--------------|
