@@ -1,0 +1,61 @@
+name: BetterQL
+options:
+  bundleIdPrefix: com.nipunbatra
+  deploymentTarget:
+    macOS: "13.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "-"
+    PROVISIONING_PROFILE_SPECIFIER: ""
+    DEVELOPMENT_TEAM: ""
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    PRODUCT_NAME: "$(TARGET_NAME)"
+
+targets:
+  BetterQL:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/App
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nipunbatra.BetterQL
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Sources/App/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Sources/App/App.entitlements
+        LSUIElement: NO
+    dependencies:
+      - target: BetterQLPreview
+        embed: true
+        codeSign: true
+
+  BetterQLPreview:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: Sources/Preview
+      - path: Resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nipunbatra.BetterQL.Preview
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Sources/Preview/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Sources/Preview/Preview.entitlements
+
+  BetterQLTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests
+      - path: Sources/Preview
+        excludes:
+          - PreviewViewController.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nipunbatra.BetterQLTests
+        GENERATE_INFOPLIST_FILE: YES

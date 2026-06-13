@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Better QL — a richer Quick Look for macOS</title>
+<meta name="description" content="Press Space in Finder and actually preview Markdown, JSON, CSV, archives, and folders.">
+<style>
+  :root {
+    --fg:#1f2328; --bg:#ffffff; --muted:#59636e; --border:#d1d9e0;
+    --accent:#0969da; --code-bg:#f6f8fa; --card:#ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fg:#e6edf3; --bg:#0d1117; --muted:#9198a1; --border:#2a313c;
+      --accent:#4493f8; --code-bg:#161b22; --card:#0f141b;
+    }
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--bg); color:var(--fg);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .wrap { max-width:860px; margin:0 auto; padding:0 24px 80px; }
+  header { text-align:center; padding:72px 0 36px; }
+  .logo { font-size:54px; line-height:1; }
+  h1 { font-size:2.5rem; margin:.3em 0 .1em; letter-spacing:-.02em; }
+  .tag { color:var(--muted); font-size:1.2rem; margin:0 0 24px; }
+  .btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .btn { display:inline-block; padding:10px 20px; border-radius:9px; font-weight:600;
+    border:1px solid var(--border); }
+  .btn.primary { background:var(--accent); color:#fff; border-color:transparent; }
+  h2 { font-size:1.4rem; margin:48px 0 14px; padding-bottom:.3em; border-bottom:1px solid var(--border); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; }
+  .card { border:1px solid var(--border); border-radius:12px; padding:16px 18px; background:var(--card); }
+  .card h3 { margin:0 0 4px; font-size:1.05rem; }
+  .card p { margin:0; color:var(--muted); font-size:.95rem; }
+  pre { background:var(--code-bg); border:1px solid var(--border); border-radius:10px;
+    padding:16px 18px; overflow:auto; font:13.5px/1.6 "SF Mono",ui-monospace,Menlo,monospace; }
+  code { font-family:"SF Mono",ui-monospace,Menlo,monospace; background:var(--code-bg);
+    padding:.12em .4em; border-radius:5px; font-size:.9em; }
+  pre code { background:none; padding:0; }
+  .note { border-left:3px solid var(--accent); padding:2px 16px; color:var(--muted); margin:16px 0; }
+  footer { text-align:center; color:var(--muted); font-size:.9rem; margin-top:56px;
+    padding-top:24px; border-top:1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">👁️</div>
+    <h1>Better QL</h1>
+    <p class="tag">Press <kbd>Space</kbd> in Finder and actually <em>preview</em> the file.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://github.com/nipunbatra/better-ql">View on GitHub</a>
+      <a class="btn" href="https://github.com/nipunbatra/better-ql#install">Install</a>
+    </div>
+  </header>
+
+  <h2>What you get</h2>
+  <div class="grid">
+    <div class="card"><h3>📝 Markdown</h3><p>Headings, tables, links, and syntax-highlighted code.</p></div>
+    <div class="card"><h3>📜 Source code</h3><p>.py, .js, .ts, .swift, .c/.cpp, .go, .rs, .rb, .sh and more.</p></div>
+    <div class="card"><h3>🧾 JSON</h3><p>Pretty-printed (order preserved) and highlighted.</p></div>
+    <div class="card"><h3>📊 CSV / TSV</h3><p>A real scrollable table with sticky headers.</p></div>
+    <div class="card"><h3>📁 Folders</h3><p>Path, kind, size, dates — plus image thumbnails.</p></div>
+    <div class="card"><h3>🗜️ Archives</h3><p>.zip, .tar, .tar.gz, .tgz, .gz — full file listing.</p></div>
+    <div class="card"><h3>🌓 Themes</h3><p>Follows macOS appearance; force light/dark via a script.</p></div>
+  </div>
+
+  <h2 id="install">Install</h2>
+  <p>macOS 13+, Xcode, and <a href="https://github.com/yonaskolb/XcodeGen">XcodeGen</a>
+     (<code>brew install xcodegen</code>). It builds with ad-hoc local signing — no Apple Developer account needed.</p>
+  <pre><code>git clone https://github.com/nipunbatra/better-ql.git
+cd better-ql
+./install.sh</code></pre>
+  <p>Then press <strong>Space</strong> in Finder on a <code>.md</code>, <code>.json</code>,
+     <code>.csv</code>, an archive, or a folder.</p>
+
+  <div class="note">
+    <strong>Why not <code>.html</code>?</strong> macOS routes <code>public.html</code> to its own
+    previewers (Safari + QuickLook generation), which run ahead of third-party extensions and disable
+    JavaScript. Better QL deliberately leaves <code>.html</code> to the system.
+  </div>
+
+  <footer>
+    Built with Claude Code · <a href="https://github.com/nipunbatra/better-ql">nipunbatra/better-ql</a>
+  </footer>
+</div>
+</body>
+</html>
